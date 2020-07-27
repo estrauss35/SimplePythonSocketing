@@ -19,7 +19,12 @@ def send(msg):
     send_length += b' ' * (HEADER - len(send_length))
     client.send(send_length)
     client.send(message)
+    print(client.recv(2048).decode(FORMAT))
 
 
-send(input("You: "))
+while True:
+    msg = input("You: ")
+    if msg == "/quit":
+        break
+    send(msg)
 
